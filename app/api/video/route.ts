@@ -9,9 +9,9 @@ const replicate = new Replicate({
 
 export const runtime = "edge";
 
-export const config = {
-  runtime: "experimental-edge",
-};
+// export const config = {
+//   runtime: "experimental-edge",
+// };
 
 export async function POST(request: Request) {
   try {

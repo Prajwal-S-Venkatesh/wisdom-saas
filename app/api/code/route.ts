@@ -7,9 +7,9 @@ import {
   OpenAIApi,
 } from "openai-edge";
 
-export const config = {
-  runtime: "experimental-edge",
-};
+// export const config = {
+//   runtime: "experimental-edge",
+// };
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
