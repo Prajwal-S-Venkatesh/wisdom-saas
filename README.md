@@ -2,6 +2,8 @@
 
 An all in one SaaS AI application for Text, Image, Audio, Video and Code generation.   
 
+[Live](https://wisdom-ai.prajwalsv.dev/)
+
 ![Wisdom Landing Page](https://github.com/Prajwal-S-Venkatesh/wisdom-saas/blob/main/img/landing.png)
 
 
