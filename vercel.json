@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "wisdom-saas",
+  "public": true,
+  "functions": {
+    "app/api/code/route.ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "app/api/image/route.ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "app/api/music/route.ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "app/api/video/route.ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
+}
