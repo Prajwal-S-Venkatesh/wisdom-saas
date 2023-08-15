@@ -1,13 +1,23 @@
 import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
+import {
+  ChatCompletionRequestMessage,
+  Configuration,
+  OpenAIApi,
+} from "openai-edge";
 
-const config = new Configuration({
+export const config = {
+  runtime: "experimental-edge",
+};
+
+const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const openai = new OpenAIApi(config);
+const openai = new OpenAIApi(configuration);
+
+export const runtime = "edge";
 
 const instructionPrompt: ChatCompletionRequestMessage = {
   role: "system",
@@ -23,7 +33,7 @@ export async function POST(request: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!config.apiKey) {
+    if (!configuration.apiKey) {
       return new NextResponse("OpenAI API key not configured!", {
         status: 500,
       });
@@ -49,7 +59,9 @@ export async function POST(request: Request) {
 
     await increaseApiLimit();
 
-    return NextResponse.json(response.data.choices[0].message);
+    const result = await response.json();
+
+    return NextResponse.json(result?.choices?.[0]?.message);
   } catch (error) {
     console.error("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal Server Error...", { status: 500 });
