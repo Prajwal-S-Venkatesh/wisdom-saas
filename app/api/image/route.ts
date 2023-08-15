@@ -1,13 +1,15 @@
 import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from "openai-edge";
 
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(config);
+
+export const runtime = "edge";
 
 export async function POST(request: Request) {
   try {
@@ -52,7 +54,9 @@ export async function POST(request: Request) {
 
     await increaseApiLimit();
 
-    return NextResponse.json(response.data.data);
+    const result = await response.json();
+
+    return NextResponse.json(result.data);
   } catch (error) {
     console.error("[IMAGE_ERROR]", error);
     return new NextResponse("Internal Server Error...", { status: 500 });
