@@ -61,7 +61,7 @@ const ConversationPage = () => {
   };
 
   return (
-    <div className="dark:bg-stone-900">
+    <div className="dark:bg-stone-950">
       <Heading
         title="Conversation"
         description="Our most advanced conversation model till date."

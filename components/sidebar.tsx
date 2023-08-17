@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FreeCounter } from "./free-counter";
+import { Badge } from "./ui/badge";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: "600" });
 
@@ -42,12 +43,14 @@ const routes = [
     icon: VideoIcon,
     href: "/video",
     color: "text-rose-500",
+    premium: true
   },
   {
     label: "Music Generation",
     icon: Music,
     href: "/music",
     color: "text-emerald-500",
+    premium: true
   },
   {
     label: "Code Generation",
@@ -93,6 +96,9 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
               <div className="flex items-center flex-1">
                 <route.icon className={cn("w-6 h-6 mr-3", route.color)} />
                 {route.label}
+                {route.premium && ( <Badge variant="premium" className="uppercase  ml-4 pt-1 text-xs">
+                  Pro
+                </Badge>)}
               </div>
             </Link>
           ))}

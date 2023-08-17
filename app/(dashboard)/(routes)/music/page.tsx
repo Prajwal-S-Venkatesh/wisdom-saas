@@ -32,6 +32,10 @@ const MusicPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // TODO: Add condition when stripe is integrated
+    proModal.onOpen();
+    return;
+
     try {
       setMusic(undefined);
 
@@ -52,7 +56,7 @@ const MusicPage = () => {
   };
 
   return (
-    <div className="dark:bg-stone-900">
+    <div className="dark:bg-stone-950">
       <Heading
         title="Music Generation"
         description="Turn your prompt into music."
@@ -94,12 +98,12 @@ const MusicPage = () => {
 
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted dark:bg-stone-950">
               <Loader />
             </div>
           )}
           {!music && !isLoading && (
-            <div className="flex flex-col gap-y-1">
+            <div className="flex flex-col gap-y-1 dark:bg-stone-950">
               <Empty label="No music generated." img="empty-music" />
             </div>
           )}

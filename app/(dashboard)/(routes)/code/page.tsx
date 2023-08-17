@@ -62,7 +62,7 @@ const CodePage = () => {
   };
 
   return (
-    <div className="dark:bg-stone-900">
+    <div className="dark:bg-stone-950">
       <Heading
         title="Code Generation"
         description="Generate code using descriptive text."
@@ -104,12 +104,12 @@ const CodePage = () => {
 
         <div className="space-y-4 mt-4 mb-10">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted dark:bg-stone-900">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted dark:bg-stone-950">
               <Loader />
             </div>
           )}
           {messages.length === 0 && !isLoading && (
-            <div className="flex flex-col gap-y-1 dark:bg-stone-900">
+            <div className="flex flex-col gap-y-1 dark:bg-stone-950">
               <Empty label="No code generated." img="empty-code" />
             </div>
           )}

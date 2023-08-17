@@ -31,7 +31,12 @@ const VideoPage = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // TODO: Add condition when stripe is integrated
+    proModal.onOpen();
+    return;
+    
     try {
+
       setVideo(undefined);
 
       const response = await axios.post("/api/video", {
@@ -51,7 +56,7 @@ const VideoPage = () => {
   };
 
   return (
-    <div className="dark:bg-stone-900">
+    <div className="dark:bg-stone-950">
       <Heading
         title="Video Generation"
         description="Turn your prompt into video."
@@ -93,7 +98,7 @@ const VideoPage = () => {
 
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted dark:bg-stone-950">
               <Loader />
             </div>
           )}
@@ -105,7 +110,7 @@ const VideoPage = () => {
           {video && (
             <video
               controls
-              className="w-full mt-8 aspect-video rounded-lg border bg-black"
+              className="w-full mt-8 aspect-video rounded-lg border bg-black dark:bg-stone-950"
             >
               <source src={video} />
             </video>

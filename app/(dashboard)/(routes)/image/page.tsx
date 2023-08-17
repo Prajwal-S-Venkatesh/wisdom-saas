@@ -19,7 +19,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-} from "@/components/ui/select";
+} from "@/components/ui/select"; 
 import { SelectValue } from "@radix-ui/react-select";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
@@ -61,7 +61,7 @@ const ImagePage = () => {
   };
 
   return (
-    <div className="dark:bg-stone-900">
+    <div className="dark:bg-stone-950">
       <Heading
         title="Image Generation"
         description="Turn your prompts into images."

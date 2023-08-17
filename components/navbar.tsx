@@ -7,8 +7,8 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const Navbar = ({ apiLimitCount }: { apiLimitCount: number }) => {
-  const { setTheme, theme, systemTheme } = useTheme()
-  const [currentTheme, setCurrentTheme] = useState("")
+  const { setTheme, theme, systemTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState("");
 
   useEffect(() => {
     setCurrentTheme(
@@ -19,8 +19,8 @@ const Navbar = ({ apiLimitCount }: { apiLimitCount: number }) => {
         : theme === "light"
         ? "light"
         : "dark"
-    )
-  }, [theme, systemTheme])
+    );
+  }, [theme, systemTheme]);
 
   return (
     <div className="flex items-center p-4">
@@ -31,6 +31,7 @@ const Navbar = ({ apiLimitCount }: { apiLimitCount: number }) => {
           onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-readonly
           className="text-red-500"
+          theme={currentTheme}
         />
         <UserButton afterSignOutUrl="/" />
       </div>
